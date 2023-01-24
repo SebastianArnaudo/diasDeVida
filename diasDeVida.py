@@ -21,17 +21,18 @@ def main():
         barrasl1=listaA1.count("/")
 
 
-
+        d = datetime.now()
+        year = d.year
         
         if barrasl1 == 2:
             listaA1=listaA1.split("/")
-            diasVividosA1=diasVividos(int(listaA1[0]),int(listaA1[1]),int(listaA1[2]))
-            
             
             try:
-                diasVividosA1=diasVividos(int(listaA1[0]),int(listaA1[1]),int(listaA1[2]))
-                
-
+                if (int(listaA1[0]) > 29 and int(listaA1[1]) == 2) or (int(listaA1[0])) > 31 or (int (listaA1[1])) > 12 or (int (listaA1[2])) > year:
+                    messagebox.showerror("Aviso","Fecha invalida")
+                else:
+                    diasVividosA1=diasVividos(int(listaA1[0]),int(listaA1[1]),int(listaA1[2]))
+                    lDiasA1["text"]= diasVividosA1
             except:
                 messagebox.showinfo("Aviso","Formato de fecha de nacimiento incorrecto")
         else:
@@ -39,7 +40,7 @@ def main():
         
     
         
-        lDiasA1["text"]= diasVividosA1
+        
 
             
     lFechaNacimiento= tk.Label(text="Ingrese su fecha de nacimiento\n En formato DD/MM/AAAA")
